@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} Applications list {% endblock %}
+
+
+
+{% block content%}
+{% include 'applications/page_header.html' %}
+
+<div class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h3 class="box-title">Claims</h3>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    {% include 'applications/application_list_component.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {%endblock%}

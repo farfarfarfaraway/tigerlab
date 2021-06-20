@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block title %} Add Applications {% endblock %}
+
+
+
+{% block content%}
+{% include 'applications/page_header.html' %}
+
+   
+
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box box-primary">
+                    
+                    <div class="box-header with-border">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h3 class="box-title">Claim Form</h3>
+                            </div>
+                            <div class="col-lg-6 text-right">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            {{ form.errors }}
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        {{ form.name }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category_name">Email</label>
+                                        {{ form.email }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="short_description">Mobile</label>
+                                        {{ form.mob }}
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="full_description">Description</label>
+                                            {{ form.description_of_loss }}
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="purchase_price">Vehicle Model</label>
+                                                {{ form.vehicle_model }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="sales_price">Vehicle No</label>
+                                                {{ form.vehicle_no }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sales_price">Accident Time</label>
+                                        {{ form.accident_time }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sales_price">Location of loss</label>
+                                        {{ form.location_of_loss }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="picture">Policy Report Lodge</label>
+                                        {{ form.policy_report_lodge }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="picture">Anybody Injured</label>
+                                        {{ form.any_body_injured }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="picture">Type of loss</label>
+                                        {{ form.type_of_loss }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="picture">Loss Image</label>
+                                        {{ form.loss_image }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="picture">Document</label>
+                                        {{ form.docfile }}
+                                    </div>
+
+                                    <div class="form-group" style="display: none;">
+                                        <label for="picture">Document</label>
+                                        {{ form.approve }}
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="current_stock">Vehicle Year Make</label>
+                                    {{ form.vehicle_year_make }}
+                                </div>
+                            </div>
+                            <button class="btn btn-success btn-sm">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

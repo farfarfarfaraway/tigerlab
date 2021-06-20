@@ -1,0 +1,79 @@
+
+<div class="box-body">
+    {% if claim %}
+        <table class="table table-bordered font-weight-small">
+            <tbody>
+            <tr>
+              
+                <th>Make year</th>
+                <th>Model</th>
+                <th>No</th>
+                <th>Accident Time</th>
+                <th>Location of loss</th>
+                <th>Type of Loss</th>
+                <th>Description of loss</th>
+                <th>Policy Report Lodge</th>
+                <th>Anybody Injured</th>
+                <th>Loss Image</th>
+                <th>DocFle</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            {% for obj in claim %}
+                <tr>
+                   <td> {{obj.vehicle_year_make}} </td>
+                   <td> {{obj.vehicle_model}} </td>
+                   <td> {{obj.vehicle_no}} </td>
+                   <td>  {{obj.accident_time}}</td>
+                   <td> {{obj.location_of_loss}} </td>
+                   <td> {{obj.type_of_loss}} </td>
+                   <td> {{obj.description_of_loss}} </td>
+                   <td> {{obj.policy_report_lodge}} </td>
+                   <td> {{obj.any_body_injured}} </td>
+                   <td>  <img src="{{obj.loss_image}}" alt="img"></td>
+                   <td> <img src="{{obj.docfile}}" alt="img"> </td>
+
+                    <td class="text-center">
+                        {% if perms.base.view_claim%}
+
+                                {%if obj.approve == 0 %}   <a class="btn btn-info btn-sm" href="approve/{{obj.id}}"> Approve <i
+                                class="fa fa-pencil"></i></a>
+                                  <a class="btn btn-danger btn-sm" href="reject/{{obj.id}}">Reject<i class="fa fa-trash"></i></a>{%endif%}
+
+                           {%if obj.approve == 1 %}   <a class="btn btn-info btn-sm disabled" href=""> Approved <i
+                            class="fa fa-pencil"></i></a>{%endif%}
+                            {%if obj.approve == 2 %}   <a class="btn btn-info btn-sm disabled" href=""> Rejected <i
+                                class="fa fa-pencil"></i></a>{%endif%}
+                        
+                        {%else%}
+
+                        {%if obj.approve == 0 %}   <a class="btn btn-info btn-sm" href="{% url 'edit-Application' obj.id%}"> Edit <i
+                            class="fa fa-pencil"></i></a>
+                             <h6 class="text-warning">In progress</h6>{%endif%}
+                      
+                             {%if obj.approve == 1 %}   <a class="btn btn-info btn-sm disabled" href=""> Approved <i
+                                class="fa fa-pencil"></i></a>{%endif%}
+                                {%if obj.approve == 2 %}   <a class="btn btn-info btn-sm disabled" href=""> Rejected <i
+                                    class="fa fa-pencil"></i></a>{%endif%}
+                              
+                    
+                        {%endif%}       
+
+
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+<a href="/logout" class="btn btn-danger">Log Out</a>
+
+    {% else %}
+        <h2>No claim applications made yet</h2>
+    {% endif %}
+</div>
+<style>
+    th{
+        font-size: 10px;
+    }
+</style>
+<!-- /.box-body -->
